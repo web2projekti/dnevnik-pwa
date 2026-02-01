@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#141821" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icons/icon-192.png" />
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Moj tajni dnevnik</title>
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Moj tajni dnevnik</h1>
+    </div>
+    <div class="actions">
+      <button id="installBtn" class="ghost" hidden>Instaliraj</button>
+      <button id="pushBtn" class="ghost">Omogući push</button>
+      <button id="pushTestBtn" class="ghost" disabled>Test push</button>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="card" id="setupCard">
+      <h2>Postavljanje locka</h2>
+      <p class="small">Snimi frazu (2 sekunde)</p>
+
+      <div class="row">
+        <div class="badge" id="netBadge">ONLINE</div>
+        <div class="badge subtle" id="swBadge">SW: ...</div>
+      </div>
+
+      <div class="label">
+        Prag podudaranja:
+        <input id="threshold" type="range" min="0.80" max="0.98" step="0.01" value="0.92" />
+        <span id="thresholdVal">0.92</span>
+      </div>
+
+      <div class="row">
+        <button id="enrollBtn">Snimi lock frazu</button>
+      </div>
+
+      <div class="label">
+        PIN (4–8 znamenki):
+        <input id="pinSet" inputmode="numeric" maxlength="8" placeholder="npr. 1234" />
+        <button id="savePinBtn" class="ghost">Spremi PIN</button>
+      </div>
+
+      <div class="hint" id="setupHint">Ako mikrofon nije dostupan/odbijen, radi samo PIN.</div>
+    </section>
+
+    <section class="card" id="lockCard">
+      <h2>Otključaj</h2>
+      <div class="row">
+        <button id="unlockVoiceBtn">Otključaj glasom</button>
+        <button id="lockBtn" class="danger" disabled>Zaključaj</button>
+      </div>
+
+      <div class="label">
+        Ili PIN:
+        <input id="pinTry" inputmode="numeric" maxlength="8" placeholder="unesi PIN" />
+        <button id="unlockPinBtn" class="ghost">Otključaj PIN</button>
+      </div>
+
+      <div class="hint" id="lockHint">Zaključano.</div>
+    </section>
+
+    <section class="card" id="vaultCard" hidden>
+      <h2>Tajne</h2>
+
+      <div class="label">
+        Naslov:
+        <input id="title" type="text" maxlength="60" placeholder="..." />
+      </div>
+      <div class="label">
+        Tekst:
+        <input id="body" type="text" maxlength="240" placeholder="kratka bilješka..." />
+      </div>
+
+      <div class="row">
+        <button id="addBtn">Spremi u tajne</button>
+        <button id="syncBtn" class="ghost">Sync sada</button>
+      </div>
+
+      <div id="list" class="list"></div>
+    </section>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
