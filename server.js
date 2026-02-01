@@ -84,7 +84,7 @@ app.post("/api/sync", async (req, res) => {
 
   const subs = readJson(SUBS_FILE, []);
   const payload = JSON.stringify({
-    title: "WhisperLock",
+    title: "Moj tajni dnevnik",
     body: `Backup završen: ${syncedIds.length} unosa`,
     url: "/"
   });
@@ -106,7 +106,7 @@ app.post("/api/sync", async (req, res) => {
 // (Opcionalno, ali zgodno za demo push-a)
 app.post("/api/push-test", async (_req, res) => {
   const subs = readJson(SUBS_FILE, []);
-  const payload = JSON.stringify({ title: "WhisperLock", body: "Test push je stigao ✅", url: "/" });
+  const payload = JSON.stringify({ title: "Moj tajni dnevnik", body: "Test push je stigao ✅", url: "/" });
 
   const stillValid = [];
   for (const sub of subs) {
